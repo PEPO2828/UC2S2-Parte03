@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponse
 
+
 # Create your views here.
 def inicio(request):
     mensaje = """
@@ -14,4 +15,33 @@ def inicio(request):
         
         """
     return HttpResponse(mensaje)
+
+def primos(request,a,b):
+    mensaje = f"""
+        <h2>Numeros Primos entre {a} y {b}</h2>
+        Resultado :<br> 
+        <ul>    
+    """
+    if a>b:
+        for i in range(b,a+1):
+            valor= range(2,i)
+            contador = 0
+            for n in valor:
+                if i % n == 0:
+                    contador +=1
+            if contador <= 0 :
+                mensaje += f" <li>{i}</li>"
+    else:
+        for i in range(a,b+1):
+            valor= range(2,i)
+            contador = 0
+            for n in valor:
+                if i % n == 0:
+                    contador +=1
+            if contador <= 0 :
+                mensaje += f" <li>{i}</li>"
+    mensaje +="</ul>"
+    return HttpResponse(mensaje)
+
+
 

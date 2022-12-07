@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/',admin.site.urls),
     path('', views.inicio, name = "inicio"),
     path('inicio/', views.inicio, name = "inicio"),
+    path('primos/<int:a>/<int:b>', views.primos, name = "primos"),
     
 ]
